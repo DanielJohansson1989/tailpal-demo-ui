@@ -1,5 +1,13 @@
 .App {
+  position: absolute;
   text-align: center;
+  width: 480px;
+  height: 800px;
+  margin-left: 33%;
+  border-radius: 30px;
+  border: 2px solid black;
+  padding: 10px;
+  box-shadow: 0 .2rem .5rem rgba(0, 0, 0, 0.3);
 }
 
 .App-logo {
@@ -9,19 +17,19 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 0.2s linear;
+    animation: App-logo-spin infinite 0.002s linear;
   }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  min-height: 10vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  /*flex-direction: column;*/
+  align-items: horizontal;
+  justify-content: space-between;
   font-size: calc(10px + 2vmin);
   color: white;
+  border-radius: 10px 10px 0 0;
 }
 
 .App-link {
@@ -35,4 +43,29 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.tailpal-logo {
+  width: fit-content;
+  height: auto;
+}
+
+.App .timeContainer {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  width: 150px;
+  padding: 5px;
+  margin-top: 35px;
+}
+
+#hamburgerIcon {
+  font-size: 50px;
+  margin-top: 10px;
+  margin-right: 20px;
+  color: rgb(88, 149, 100, 100);
 }
