@@ -1,0 +1,43 @@
+label {
+    width: 350px;
+    height: 50px;
+    position: relative;
+    left: 30px;
+    display: block;
+    background: #D9D9D9;
+    border-radius: 200px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+label:after {
+    content: "";
+    width: 175px;
+    height: 40px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background: #589564;
+    border-radius: 180px;
+    transition: 0.3s;
+}
+
+input {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+
+input:checked + label:after {
+    left: 345px;
+    transform: translateX(-100%);
+}
+
+.toggle-container {
+    position: fixed;
+    bottom: 200px;
+    left: 44%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
