@@ -1,0 +1,90 @@
+.vaccination-list {
+    padding: 10px; /* Minska padding */
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px; /* Minska padding */
+    background-color: #f9f9f9;
+}
+
+.card-header {
+    margin-bottom: 10px; /* Minska marginalen */
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    max-height: 400px; /* Sätt en maximal höjd */
+    overflow-y: auto; /* Tillåt vertikal scrollning */
+}
+
+/* Styla scrollbaren */
+.card-content::-webkit-scrollbar {
+    width: 8px; /* Bredd på scrollbaren */
+}
+
+.card-content::-webkit-scrollbar-thumb {
+    background-color: rgb(88, 149, 100); /* Färg på scrollthumb */
+    border-radius: 10px; /* Rundade hörn */
+}
+
+.card-content::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Färg på scrollbarens spår */
+}
+
+/* För Firefox */
+.card-content {
+    scrollbar-width: thin; /* Gör scrollbaren smal */
+    scrollbar-color: rgb(88, 149, 100) #f1f1f1; /* Färg på scrollthumb och spår */
+}
+
+.vaccination-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0; /* Minska marginalen */
+    border-bottom: 1px solid #eee;
+    padding: 5px 0; /* Minska padding */
+    gap: 15px; /* Lägger till extra utrymme mellan kolumner */
+}
+
+.info-column {
+    flex: 1;
+    margin-right: 5px; /* Minska marginalen */
+}
+
+.info-column:last-child {
+    margin-right: 0;
+}
+
+/* Stil för text */
+.info-column p {
+    margin: 0;
+    line-height: 1.5; /* Förbättrar läsbarheten genom att öka radavståndet */
+}
+
+/* Minska fontstorleken */
+h4 {
+    font-size: 0.8em; /* Mindre rubriker */
+}
+
+p {
+    font-size: 0.9em; /* Mindre text */
+}
+
+/* Ställ in färg på Font Awesome-ikoner */
+.info-column h4 i {
+    color: rgb(88, 149, 100); /* Byt ut med den exakta gröna färgen från din design */
+}
+
+/* Responsiv styling för mobil */
+@media (max-width: 768px) {
+    .vaccination-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .info-column {
+        margin-bottom: 5px; /* Minska marginalen */
+    }
+}
