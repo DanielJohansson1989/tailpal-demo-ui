@@ -2,15 +2,14 @@ import React, { useState, useEffect } from 'react';
 import '../css/PetList.css';
 import '../App.css';
 import { useNavigate, useLocation } from 'react-router-dom';
-import App from '../App';
 
 function PetList({ petData, setPetData }) {
     const [pets, setPets] = useState([]);
     const [selectedPets, setSelectedPets] = useState([]);
     const [loading, setLoading] = useState(false);
     const location = useLocation();
+    const navigate = useNavigate();
 
-      
     const fetchPets = () => {
         setLoading(true);
         fetch('https://localhost:7254/pets')
@@ -29,15 +28,15 @@ function PetList({ petData, setPetData }) {
                 setLoading(false);
             });
     };
-    
-    
+
     useEffect(() => {
-        if (location.state?.fromBankID) {
-            if (!petData) {
-                fetchPets(); // Only fetch if no data exists
-            }
+        // Fetch pets only if coming from BankID and petData is not already loaded
+        if (location.state?.fromBankID && !petData) {
+            fetchPets();
+        } else if (location.state?.fromBankID) {
+            setPets(petData); // If petData exists, use it
         }
-    }, [petData],[location.state]);
+    }, [location.state, petData]); // Combine dependencies into a single array
 
     const handlePetClick = (chipId) => {
         setSelectedPets(prevSelected => {
@@ -49,16 +48,14 @@ function PetList({ petData, setPetData }) {
         });
     };
 
-    const navigate = useNavigate();
-
     const handleUpdateClick = () => {
-        
-            navigate('/bankid');
+        navigate('/bankid');
     };
 
-    // const onConfirm = () {
-    //     navigate('/')
-    // }
+    const handleConfirmClick = () => {
+        // Assuming you want to navigate to a confirmation or home page
+        navigate('/'); // Change this to the desired path for confirmation
+    };
 
     return (
         <div className="owners-list">
@@ -84,7 +81,7 @@ function PetList({ petData, setPetData }) {
             </div>
             <footer style={{ position: 'absolute', bottom: '0', left: '0', right: '0' }} className="footer">
                 <button onClick={handleUpdateClick} className="update-button">Update</button>
-                <button onClick={handleUpdateClick} className="update-button">Confirm</button>
+                <button onClick={handleConfirmClick} className="update-button">Confirm</button>
                 <p>{new Date().toLocaleDateString()} {new Date().toLocaleTimeString()}</p>
             </footer>
         </div>
