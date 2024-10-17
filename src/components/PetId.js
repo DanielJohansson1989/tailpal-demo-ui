@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../App.css'
 import './PetId.css'
 
+
 function PetId() {
     const [owners, setOwners] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -33,12 +34,12 @@ function PetId() {
             {!isOn ? (
                 owners.map(owner => (
                     <div key={owner.id}>
-                        <div className='row'>
+                        <div className='row justify-content-center align-items-center'>
                             <div className='col-md-5 align-left'>
-                                <img style={ {width: '100px', height: 'auto' } } src="https://hundarlangtarhem.se/wp-content/uploads/2022/11/SIXTEN.jpg" alt="Pet Photo" />
+                                <img className='pet-pic' src="https://hundarlangtarhem.se/wp-content/uploads/2022/11/SIXTEN.jpg" alt="Pet Photo" />
                             </div>
-                            <div className='col-md-7'>
-                                <ul className='list-unstyled d-flex flex-column align-items-start'>
+                            <div className='col-md-7' style={{marginTop: '10px'}}>
+                                <ul className='list-unstyled d-flex flex-column align-items-start justify-content-between'>
                                     <li>Chip Id:&nbsp;<strong>{owner.pets[0]?.chipId}</strong></li>
                                     <li>Date of Chip:&nbsp;<strong>{owner.pets[0]?.dateOfChip.slice(0,-9)}</strong></li>
                                     <li>Chip Location:&nbsp;<strong>{owner.pets[0]?.chipLoc}</strong></li>
@@ -46,7 +47,7 @@ function PetId() {
                             </div>
                         </div>
                         <div className='row'>
-                            <div className='col-md-12'>
+                            <div className='col-md-12' style={{marginTop: '10px'}}>
                                 <ul className='list-unstyled d-flex flex-column align-items-start'>
                                     <li>Pet Name:&nbsp;<strong>{owner.pets[0]?.petName}</strong></li>
                                     <li>Species:&nbsp;<strong>{owner.pets[0]?.species}</strong></li>
@@ -57,7 +58,7 @@ function PetId() {
                                 </ul>
                             </div>
                         </div>
-                        <div className="row card">
+                        <div className="row">
                             <h5>Owner</h5>
                             <div className='col-md-12'>
                                 <ul className='list-unstyled d-flex flex-column align-items-start'>
@@ -80,8 +81,12 @@ function PetId() {
             )}
 
             <div className='toggle-container'>
-                <input type='checkbox' id='id-vaccine-toggle' checked={isOn} onChange={toggleButton} ></input>
-                <label htmlFor='id-vaccine-toggle'></label>
+                <span className="id-label">ID</span>
+                <span className="vaccine-label">Vaccine</span>
+                <div className="toggle-wrapper">
+                    <input type='checkbox' id='id-vaccine-toggle' checked={isOn} onChange={toggleButton} />
+                    <label htmlFor='id-vaccine-toggle'></label>
+                </div>
             </div>
         </div>
     );

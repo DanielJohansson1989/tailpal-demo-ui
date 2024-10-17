@@ -1,17 +1,31 @@
+.id-label {
+    left: 20px;
+}
+
+.vaccine-label {
+    right: 20px;
+}
+
+
+.toggle-wrapper {
+    position: relative;
+    z-index: 1; 
+}
+
+
 label {
     width: 350px;
     height: 50px;
     position: relative;
-    left: 30px;
     display: block;
-    background: #D9D9D9;
     border-radius: 200px;
     cursor: pointer;
     transition: 0.3s;
 }
 
+
 label:after {
-    content: "";
+    content: "ID";
     width: 175px;
     height: 40px;
     position: absolute;
@@ -30,9 +44,12 @@ input {
 
 
 input:checked + label:after {
+    content: 'Vaccine';
     left: 345px;
     transform: translateX(-100%);
 }
+
+
 
 .toggle-container {
     position: fixed;
@@ -40,4 +57,28 @@ input:checked + label:after {
     left: 44%;
     transform: translateX(-50%);
     z-index: 1000;
+    width: 350px;
+    height: 50px;
+}
+.id-label, .vaccine-label {
+    position: absolute;
+    bottom: -20px;
+    transform: translateY(-50%);
+    font-weight: bold;
+    z-index: 0;
+    font-size: 16px;
+    color: #333;
+    pointer-events: none; 
+}
+
+.row {
+    background: #D9D9D9;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+.pet-pic {
+    width: 80px;
+    height: auto;
+    border-radius: 50%;
 }
