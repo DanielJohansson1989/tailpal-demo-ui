@@ -1,0 +1,174 @@
+.paw-print {
+    position: absolute;
+    width: 35px;
+    height: 350px;
+    background-image: url('https://images.squarespace-cdn.com/content/v1/5e77a95845630059ae9de949/1664562080769-9YZ4KYGWDUY68W0ZKUNZ/pawprint.png?format=1500w');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.5; /* Start at 50% opacity */
+    transition: opacity 1s ease-out; /* Smooth fade-out transition */
+    z-index: 0;
+  }
+  
+  /* Class to trigger fade-out */
+  .paw-print.fade-out {
+    opacity: 0; /* Fade out effect */
+  }
+  
+  /* App.css */
+  
+  /* Styling for animal info */
+  .animal-info {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: 200px;
+    margin: 20px auto;
+  }
+  
+  /* Title styling */
+  .title {
+    position: absolute;
+    width: 100%;
+    top: 0; /* Position title at the top */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; /* Center title text */
+    font-size: 1.5em;
+    left: 0;
+    z-index: 1; /* Ensure title is above the info */
+  }
+  
+  /* Wrapper for swiping animation for information content */
+  .info-content {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 40px); /* Adjust height to leave space for title */
+    top: 40px; /* Leave space for title */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; /* Center information text */
+    font-size: 1.5em;
+    left: 0;
+  }
+  
+  /* Sliding animation for left swipe */
+  .slide-left {
+    animation: slide-left 0.5s forwards;
+  }
+  
+  @keyframes slide-left {
+    0% { left: 100%; }
+    100% { left: 0; }
+  }
+  
+  /* Sliding animation for right swipe */
+  .slide-right {
+    animation: slide-right 0.5s forwards;
+  }
+  
+  @keyframes slide-right {
+    0% { left: -100%; }
+    100% { left: 0; }
+  }
+  
+  .page-indicator {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: lightgray;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  
+  .dot.active {
+    background-color: gray;
+  }
+  
+  
+  /* Styles for the page indicator (dots) */
+  .page-indicator {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .page-indicator .dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: lightgray;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s;
+  }
+  
+  .page-indicator .dot.active {
+    background-color: rgb(88, 149, 100, 100); /* Highlight the active dot */
+  }
+  
+  .App {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+  }
+  
+  /*toggle button*/
+  .toggleContainer {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: fit-content;
+    border: 3px solid rgb(88, 149, 100, 100);
+    border-radius: 20px;
+    background: rgb(88, 149, 100, 100);
+    font-weight: bold;
+    color: #343434;
+    cursor: pointer;
+  }
+  .toggleContainer::before {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 0%;
+    border-radius:20px;
+    background: white;
+    transition: all 0.3s;
+  }
+  .toggleCheckbox:checked + .toggleContainer::before {
+     left: 50%;
+  }
+  .toggleContainer div {
+    padding: 6px;
+    text-align: center;
+    z-index: 1;
+  }
+  .toggleCheckbox {
+    display: none;
+  }
+  .toggleCheckbox:checked + .toggleContainer div:first-child{
+    color: white;
+    transition: color 0.3s;
+  }
+  .toggleCheckbox:checked + .toggleContainer div:last-child{
+    color: #343434;
+    transition: color 0.3s;
+  }
+  .toggleCheckbox + .toggleContainer div:first-child{
+    color: #343434;
+    transition: color 0.3s;
+  }
+  .toggleCheckbox + .toggleContainer div:last-child{
+    color: white;
+    transition: color 0.3s;
+  }

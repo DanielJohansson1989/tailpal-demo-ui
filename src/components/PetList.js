@@ -26,7 +26,7 @@ function PetList() {
   };
 
   const handleConfirmClick = () => {
-    navigate('/');
+    navigate('/petid');
   };
 
   return (
@@ -59,8 +59,10 @@ function PetList() {
 
 
       <footer style={{ position: 'absolute', bottom: '0', left: '0', right: '0' }} className="footer">
+        <div className='button-container'>
         <button onClick={handleUpdateClick} className="update-button">Update</button>
         <button onClick={handleConfirmClick} className="update-button">Confirm</button>
+        </div>
         <p>{new Date().toLocaleDateString()} {new Date().toLocaleTimeString()}</p>
       </footer>
     </div>

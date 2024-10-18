@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-route
 import React from 'react';
 import { PetProvider } from './components/PetContext'; // Import PetProvider
 import TimeDisplay from './components/TimeDisplay';
+import PetId from './components/PetId';
+import { useSwipeable } from 'react-swipeable';
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
               <Route path="/" element={<Dashboard />} /> 
               <Route path="/bankid" element={<BankID />} />
               <Route path="/petlist" element={<PetList />} />
+              <Route path="/petid" element={<PetId />} />
             </Routes>
           </main>
         </div>
