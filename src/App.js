@@ -5,6 +5,7 @@ import PetList from './components/PetList';
 import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import React from 'react';
 import { PetProvider } from './components/PetContext'; // Import PetProvider
+import TimeDisplay from './components/TimeDisplay';
 
 function App() {
   return (
@@ -42,7 +43,7 @@ function Header() {
             alt="logo" 
           />
         </span>
-        <span className='timeContainer'>10:00</span>
+        <span><TimeDisplay /></span>
         <span>
           <i className='fa-solid fa-bars' id='hamburgerIcon'></i>
         </span>
