@@ -22,7 +22,7 @@
 
     const navigate = useNavigate();
         const options = [
-        { name: 'ID', icon: 'fa-regular fa-user', path: '/petlist' }, 
+        { name: 'ID', icon: 'fa-regular fa-user', path: '/petlist', }, 
         { name: 'Hälsa', icon: 'fa-solid fa-heart-pulse' }, 
         { name: 'Meriter', icon: 'fa-solid fa-medal' }, 
         { name: 'Försäkring', icon: 'fa-regular fa-file-lines' }, 
@@ -32,7 +32,7 @@
 
         const handleOptionClick = (path) => {
         if (path) {
-            navigate(path);
+            navigate(path, { state: { fromDashBoard: true } });
         }
         }
     

@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 function App() {
     
     const [petData, setPetData] = useState(null);  // Store fetched pet data
-    const [vaccinationData, setVaccinationData] = useState(null);  // Store vaccination data
+    const [vaccinationData, setVaccineData] = useState(null);  // Store vaccination data
 
   return (
     <>

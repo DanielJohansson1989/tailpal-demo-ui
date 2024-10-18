@@ -3,12 +3,31 @@ import '../css/PetList.css';
 import '../App.css';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-function PetList({ petData, setPetData }) {
+function PetList({ petData, setPetData, vaccinationData, setVaccinationData }) {
+    const [vaccine, setVaccineData] = useState([]);
     const [pets, setPets] = useState([]);
     const [selectedPets, setSelectedPets] = useState([]);
     const [loading, setLoading] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
+
+    const fetchVaccine = () => {
+        setLoading(true);
+        fetch('https://localhost:7154/vaccinations').then(response => {
+            if (!response.ok) {
+                throw new Error(`Network response was not ok: ${response.status} ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            setVaccineData(data);
+            setLoading(false);
+        })
+        .catch(error => {
+            console.error("Det uppstod ett fel vid hämtning av djuren!", error);
+            setLoading(false);
+        });
+    }
 
     const fetchPets = () => {
         setLoading(true);
@@ -33,9 +52,13 @@ function PetList({ petData, setPetData }) {
         // Fetch pets only if coming from BankID and petData is not already loaded
         if (location.state?.fromBankID && !petData) {
             fetchPets();
-        } else if (location.state?.fromBankID) {
+            fetchVaccine();
+        } else if (location.state?.fromBankID || location.state?.fromDashBoard && petData) {
             setPets(petData); // If petData exists, use it
+            setVaccineData(vaccinationData);
+            console.log("Entering else if has petdata");
         }
+
     }, [location.state, petData]); // Combine dependencies into a single array
 
     const handlePetClick = (chipId) => {
