@@ -26,8 +26,8 @@ function PetList() {
   };
 
   const handleConfirmClick = () => {
-    navigate('/petid');
-  };
+    navigate('/petid', { state: { selectedPets } }); // Pass selectedPets to PetId 
+  }
 
   return (
     <div className="owners-list">
