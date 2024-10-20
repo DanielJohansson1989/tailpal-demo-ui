@@ -22,7 +22,7 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    height: 200px;
+    height: 600px;
     margin: 20px auto;
   }
   
@@ -44,7 +44,7 @@
   .info-content {
     position: absolute;
     width: 100%;
-    height: calc(100% - 40px); /* Adjust height to leave space for title */
+    height: calc(100% - 200px); /* Adjust height to leave space for title */
     top: 40px; /* Leave space for title */
     display: flex;
     align-items: center;
@@ -96,6 +96,9 @@
   
   /* Styles for the page indicator (dots) */
   .page-indicator {
+    position: absolute;
+    bottom: 70px;
+    left: 175px;
     display: flex;
     justify-content: center;
     margin-top: 10px;
@@ -146,7 +149,7 @@
     transition: all 0.3s;
   }
   .toggleCheckbox:checked + .toggleContainer::before {
-     left: 50%;
+    left: 50%;
   }
   .toggleContainer div {
     padding: 6px;
@@ -172,3 +175,43 @@
     color: white;
     transition: color 0.3s;
   }
+
+  /* Moves the toggle button to the bottom of the phone */
+  .toggleButtonWrapper {
+    position: absolute;
+    bottom: 10px;
+    left: 100px;
+  }
+
+  .pet-pic {
+    width: 80px;
+    height: auto;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.pet-info {
+  font-size: large;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.first-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: large;
+}
+
+.box {
+  background: #d9d9d9;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 20px;
+}
+
+.box ul {
+  margin: 5px;
+}
