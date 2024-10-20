@@ -16,7 +16,7 @@ function PetId() {
   const selectedPets = location.state?.selectedPets || []; 
 
   // Filter the petData based on selectedPets
-  const filteredAnimals = petData.filter(pet => selectedPets.includes(pet.chipId));
+  const filteredAnimals = petData.flatMap(owner => owner.pets).filter(pet => selectedPets.includes(pet.chipId));
   const currentAnimal = filteredAnimals.length > 0 ? filteredAnimals[currentAnimalIndex] : null;
 
   // Swipe Handlers
@@ -128,9 +128,20 @@ function PetId() {
                       </div>
                       <div className='box'>
                         <h5>Owner</h5>
+                          {petData.map( (owner) => (
+                          <ul className='list-unstyled d-flex flex-column align-items-start'>
+                            <li>First Name:&nbsp;<strong>{owner.firstName}</strong></li>
+                            <li>Last Name:&nbsp;<strong>{owner.lastName}</strong></li>
+                            <li>Address:&nbsp;<strong>{owner.address}</strong></li>
+                            <li>Postal Code:&nbsp;<strong>{owner.postCode}</strong></li>
+                            <li>City:&nbsp;<strong>{owner.city}</strong></li>
+                            <li>Country:&nbsp;<strong>{owner.country}</strong></li>
+                            <li>Phone Number:&nbsp;<strong>{owner.phoneNumber}</strong></li>
+                          </ul>
+                          ))}
                       </div>
                   </div>
-                )} {/* Ensure these properties exist in petData */}
+                )}
                 </div>
               </div>
             </>

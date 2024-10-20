@@ -13,7 +13,7 @@ import { useLocation } from 'react-router-dom';
 
      const fetchPets = async () => {
        try {
-         const petsResponse = await fetch('https://localhost:7254/pets');
+         const petsResponse = await fetch('https://localhost:7254/owners');
          const petsData = await petsResponse.json();
          setPetData(petsData);
        } catch (error) {

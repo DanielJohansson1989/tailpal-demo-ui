@@ -38,7 +38,7 @@ function PetList() {
           <p>Loading...</p>
         ) : (
           petData && petData.length > 0 ? (
-            petData.map(pet => (
+            petData.flatMap(owner => owner.pets).map(pet => (
               <div 
                 key={pet.chipId}
                 className={`owner-item ${selectedPets.includes(pet.chipId) ? 'selected' : ''}`}
