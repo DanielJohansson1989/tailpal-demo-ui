@@ -82,18 +82,18 @@ function PetId() {
                         </div>
                         <div className="card-content">
                           {vaccinationData.map((vaccination) => (
-                          <div key={vaccinationData.vaccinationId} className="vaccination-row">
+                          <div key={vaccination.vaccinationId} className="vaccination-row">
                             <div className="info-column">
                               <h4><i className="fas fa-syringe"></i> Vaccination</h4>
-                              <p>{vaccinationData.vaccineName || 'Ingen typ'}</p>
+                              <p>{vaccination.vaccineName || 'Ingen typ'}</p>
                             </div>
                             <div className="info-column">
                               <h4><i className="fas fa-calendar-alt"></i> Datum</h4>
                               <p>
-                                {vaccinationData.dateOfVaccination ? 
+                                {vaccination.dateOfVaccination ? 
                                   `Från: ${new Date(vaccination.dateOfVaccination).toLocaleDateString()}` : 
                                   'Ingen datum'}<br />
-                                  {vaccinationData.validUntil ? 
+                                  {vaccination.validUntil ? 
                                   `Till: ${new Date(vaccination.validUntil).toLocaleDateString()}` : 
                                   'Inget slutdatum'}
                               </p>
@@ -101,13 +101,13 @@ function PetId() {
                             <div className="info-column">
                               <h4><i className="fas fa-hospital"></i> Klinik och Veterinär</h4>
                               <p>
-                                {vaccinationData.vetLoc || 'Ingen klinik'}<br />
-                                {vaccinationData.vetName || 'Ingen veterinär'}
+                                {vaccination.vetLoc || 'Ingen klinik'}<br />
+                                {vaccination.vetName || 'Ingen veterinär'}
                               </p>
                             </div>
                             <div className="info-column">
                               <h4><i className="fas fa-vial"></i> Batch</h4>
-                              <p>{vaccinationData.batch || 'Ingen batch'}</p>
+                              <p>{vaccination.batch || 'Ingen batch'}</p>
                             </div>
                           </div>
                         ))}
@@ -150,6 +150,7 @@ function PetId() {
           )}
         </div>
 
+        <footer className='nav-buttons'>
         <div className="page-indicator">
           {filteredAnimals.map((animal, index) => (
             <span
@@ -159,7 +160,7 @@ function PetId() {
           ))}
         </div>
 
-        <div className='toggleButtonWrapper'>
+        
           <input
             type="checkbox"
             id="toggle"
@@ -171,7 +172,9 @@ function PetId() {
             <div>ID</div>
             <div>Vaccination</div>
           </label>
-        </div>
+        
+        <p className='timeStamp'>{new Date().toLocaleDateString()} {new Date().toLocaleTimeString()}</p>
+        </footer>
     </div>
   );
 }

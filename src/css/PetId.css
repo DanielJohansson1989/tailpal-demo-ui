@@ -22,7 +22,7 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    height: 600px;
+    height: 620px;
     margin: 20px auto;
   }
   
@@ -44,8 +44,8 @@
   .info-content {
     position: absolute;
     width: 100%;
-    height: calc(100% - 200px); /* Adjust height to leave space for title */
-    top: 40px; /* Leave space for title */
+    height: calc(100% - -50px); /* Adjust height to leave space for title */
+    top: 10px; /* Leave space for title */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -96,12 +96,10 @@
   
   /* Styles for the page indicator (dots) */
   .page-indicator {
-    position: absolute;
-    bottom: 70px;
-    left: 175px;
     display: flex;
     justify-content: center;
     margin-top: 10px;
+    margin-bottom: 10px;
   }
   
   .page-indicator .dot {
@@ -127,16 +125,18 @@
   
   /*toggle button*/
   .toggleContainer {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    width: fit-content;
-    border: 3px solid rgb(88, 149, 100, 100);
-    border-radius: 20px;
-    background: rgb(88, 149, 100, 100);
-    font-weight: bold;
-    color: #343434;
-    cursor: pointer;
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      width: fit-content;
+      border: 3px solid rgba(88, 149, 100, 1); 
+      border-radius: 20px;
+      background: rgba(88, 149, 100, 1); 
+      font-weight: bold;
+      color: #343434;
+      cursor: pointer;
+      margin: 0 auto;
+      text-align: center; 
   }
   .toggleContainer::before {
     content: '';
@@ -177,11 +177,6 @@
   }
 
   /* Moves the toggle button to the bottom of the phone */
-  .toggleButtonWrapper {
-    position: absolute;
-    bottom: 10px;
-    left: 100px;
-  }
 
   .pet-pic {
     width: 80px;
@@ -191,9 +186,7 @@
 }
 
 .pet-info {
-  position: absolute;
-  top: 75px;
-  left: 100px;
+  
   font-size: large;
   display: flex;
   flex-direction: column;
@@ -211,10 +204,26 @@
 .box {
   background: #d9d9d9;
   padding: 5px;
-  margin: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   border-radius: 20px;
 }
 
 .box ul {
   margin: 5px;
+}
+
+.nav-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.timeStamp {
+  margin-top: 1px;
 }

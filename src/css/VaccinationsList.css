@@ -1,9 +1,8 @@
 .vaccination-list {
     padding: 10px; /* Minska padding */
-    position: absolute;
-    top: 80px;
-    left: 1px;
     font-size: large;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .card {
@@ -20,7 +19,7 @@
 .card-content {
     display: flex;
     flex-direction: column;
-    max-height: 400px; /* Sätt en maximal höjd */
+    max-height: 350px; /* Sätt en maximal höjd */
     overflow-y: auto; /* Tillåt vertikal scrollning */
 }
 
