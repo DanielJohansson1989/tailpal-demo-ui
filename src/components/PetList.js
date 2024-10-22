@@ -5,7 +5,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { PetContext } from './PetContext'; // Import the context
 
 function PetList() {
-  const { petData, vaccinationData, loading } = useContext(PetContext); // Access global data from context
+  const { petData, vaccinationData, loading, dateTime } = useContext(PetContext); // Access global data from context
   const [selectedPets, setSelectedPets] = useState([]);
   const location = useLocation();
   const navigate = useNavigate();
@@ -63,7 +63,7 @@ function PetList() {
         <button onClick={handleUpdateClick} className="update-button">Update</button>
         <button onClick={handleConfirmClick} className="update-button">Confirm</button>
         </div>
-        <p>{new Date().toLocaleDateString()} {new Date().toLocaleTimeString()}</p>
+        <p>{dateTime.date} {dateTime.time}</p>
       </footer>
     </div>
   );

@@ -6,7 +6,7 @@ import '../css/PetId.css';
 import '../css/VaccinationsList.css';
 
 function PetId() {
-  const { petData } = useContext(PetContext); // Get petData from the context
+  const { petData, dateTime } = useContext(PetContext); // Get petData from the context
   const { vaccinationData } = useContext(PetContext);
   const [currentAnimalIndex, setCurrentAnimalIndex] = useState(0);
   const [showVaccineCard, setShowVaccineCard] = useState(false);
@@ -59,84 +59,93 @@ function PetId() {
             <>
               <div className={`title ${animationClass}`}>
                 {/* <h2>{currentAnimal.petName}</h2>  Adjusted to use petName */}
-                <div className='first-row'>
-                  <div>
-                    <img className='pet-pic' src="https://hundarlangtarhem.se/wp-content/uploads/2022/11/SIXTEN.jpg" alt="Pet Photo" />
-                  </div>
-                    <div className='box'>
-                      <ul className='list-unstyled d-flex flex-column align-items-start'>
-                        <li>Chip Id:&nbsp;<strong>{currentAnimal.chipId}</strong></li>
-                        <li>Date of Chip:&nbsp;<strong>{currentAnimal.dateOfChip.slice(0,-9)}</strong></li>
-                        <li>Chip Location:&nbsp;<strong>{currentAnimal.chipLoc}</strong></li>
-                      </ul>
-                    </div>
-                  </div>
+                <div className='box-pet-name'>
+                  <strong>{currentAnimal.petName} - {currentAnimal.species}</strong>
                 </div>
+              </div>
+                <div>
+                
+                
+              </div>
+
               <div className={`info-content ${animationClass}`}>
                 <div>
                   {showVaccineCard ? (
+                    <div>
+                    <div className='box'><span className='opacity-title'>Chip Id:</span> {currentAnimal.chipId}</div>
                     <div className="vaccination-list">
                       <div className="card">
                         <div className="card-header">
-                          <h3>Vaccinationer</h3>
+                          <h3>Vaccinations</h3>
                         </div>
                         <div className="card-content">
                           {vaccinationData.map((vaccination) => (
                           <div key={vaccination.vaccinationId} className="vaccination-row">
                             <div className="info-column">
                               <h4><i className="fas fa-syringe"></i> Vaccination</h4>
-                              <p>{vaccination.vaccineName || 'Ingen typ'}</p>
+                              <p>{vaccination.vaccineName || 'Error 404'}</p>
                             </div>
                             <div className="info-column">
-                              <h4><i className="fas fa-calendar-alt"></i> Datum</h4>
+                              <h4><i className="fas fa-calendar-alt"></i> Date</h4>
                               <p>
                                 {vaccination.dateOfVaccination ? 
-                                  `Från: ${new Date(vaccination.dateOfVaccination).toLocaleDateString()}` : 
-                                  'Ingen datum'}<br />
+                                  `From: ${new Date(vaccination.dateOfVaccination).toLocaleDateString()}` : 
+                                  'Error 404'}<br />
                                   {vaccination.validUntil ? 
-                                  `Till: ${new Date(vaccination.validUntil).toLocaleDateString()}` : 
-                                  'Inget slutdatum'}
+                                  `To: ${new Date(vaccination.validUntil).toLocaleDateString()}` : 
+                                  'Error 404'}
                               </p>
                             </div>
                             <div className="info-column">
-                              <h4><i className="fas fa-hospital"></i> Klinik och Veterinär</h4>
+                              <h4><i className="fas fa-hospital"></i>Veterarian</h4>
                               <p>
-                                {vaccination.vetLoc || 'Ingen klinik'}<br />
-                                {vaccination.vetName || 'Ingen veterinär'}
+                                {vaccination.vetLoc || 'Error 404'}<br />
+                                {vaccination.vetName || 'Error 404'}
                               </p>
                             </div>
                             <div className="info-column">
                               <h4><i className="fas fa-vial"></i> Batch</h4>
-                              <p>{vaccination.batch || 'Ingen batch'}</p>
+                              <p>{vaccination.batch || 'Error 404'}</p>
                             </div>
                           </div>
                         ))}
                       </div>
                     </div>
                   </div>
+                  </div>
                   ) : (
                     <div className='pet-info'>
-                      <div className='box'>
-                        <ul className='list-unstyled d-flex flex-column align-items-start'>
-                          <li>Pet Name:&nbsp;<strong>{currentAnimal.petName}</strong></li>
-                          <li>Species:&nbsp;<strong>{currentAnimal.species}</strong></li>
-                          <li>Breed:&nbsp;<strong>{currentAnimal.breed}</strong></li>
-                          <li>Sex:&nbsp;<strong>{currentAnimal.sex}</strong></li>
-                          <li>Date of Birth:&nbsp;<strong>{currentAnimal.dateOfBirth.slice(0,-9)}</strong></li>
-                          <li>Color:&nbsp;<strong>{currentAnimal.color}</strong></li>
-                        </ul>
+                      <div className='first-row'>
+                        <div>
+                          <img className='pet-pic' src="https://hamiltonmillvet.com/wp-content/uploads/sites/185/2022/07/Placeholder-1.png" alt="Pet Photo" />
+                        </div>
+                        <div>
+                          <div className='box'>
+                            <span className='opacity-title'>Chip Id:</span> {currentAnimal.chipId} - {currentAnimal.dateOfChip.slice(0,-9)}</div>
+                          <div className='box'>
+                          <span className='opacity-title'>Chip Location:</span> {currentAnimal.chipLoc}</div>
+                        </div>
+                      </div>
+                      <div className='second-box'>
+                          <div className='second-row'>
+                            <div className='box birthdate'>
+                            <span className='opacity-title'>DOB:</span> {currentAnimal.dateOfBirth.slice(0,-9)}</div>
+                            <div className='box birthdate'><span className='opacity-title'>Sex:</span> {currentAnimal.sex}</div>
+                          </div>
+                          <div className='box'><span className='opacity-title'>Breed:</span> {currentAnimal.breed}</div>
+                          <div className='box'><span className='opacity-title'>Color:</span> {currentAnimal.color}</div>
                       </div>
                       <div className='box'>
                         <h5>Owner</h5>
                           {petData.map( (owner) => (
                           <ul className='list-unstyled d-flex flex-column align-items-start'>
-                            <li>First Name:&nbsp;<strong>{owner.firstName}</strong></li>
-                            <li>Last Name:&nbsp;<strong>{owner.lastName}</strong></li>
-                            <li>Address:&nbsp;<strong>{owner.address}</strong></li>
-                            <li>Postal Code:&nbsp;<strong>{owner.postCode}</strong></li>
-                            <li>City:&nbsp;<strong>{owner.city}</strong></li>
-                            <li>Country:&nbsp;<strong>{owner.country}</strong></li>
-                            <li>Phone Number:&nbsp;<strong>{owner.phoneNumber}</strong></li>
+                            <li><span className='opacity-title'>First Name: </span> {owner.firstName}</li>
+                            <li><span className='opacity-title'>Last Name: </span>{owner.lastName}</li>
+                            <li><span className='opacity-title'>Address: </span>{owner.address}</li>
+                            <li><span className='opacity-title'>Postal Code: </span>{owner.postCode}</li>
+                            <li><span className='opacity-title'>City: </span>{owner.city}</li>
+                            <li><span className='opacity-title'>Country: </span>{owner.country}</li>
+                            <li><span className='opacity-title'>Phone Number: </span>{owner.phoneNumber}</li>
                           </ul>
                           ))}
                       </div>
@@ -173,7 +182,7 @@ function PetId() {
             <div>Vaccination</div>
           </label>
         
-        <p className='timeStamp'>{new Date().toLocaleDateString()} {new Date().toLocaleTimeString()}</p>
+        <p className='timeStamp'>{dateTime.date} {dateTime.time}</p>
         </footer>
     </div>
   );
