@@ -10,6 +10,7 @@
     border-radius: 8px;
     padding: 10px; /* Minska padding */
     background-color: #f9f9f9;
+    margin-top: -10px;
 }
 
 .card-header {

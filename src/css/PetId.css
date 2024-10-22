@@ -44,7 +44,7 @@
   .info-content {
     position: absolute;
     width: 100%;
-    height: calc(100% - -50px); /* Adjust height to leave space for title */
+    height: calc(100% - -30px); /* Adjust height to leave space for title */
     top: 10px; /* Leave space for title */
     display: flex;
     align-items: center;
@@ -179,7 +179,7 @@
   /* Moves the toggle button to the bottom of the phone */
 
   .pet-pic {
-    width: 80px;
+    width: 100px;
     height: auto;
     border-radius: 50%;
     margin-right: 20px;
@@ -202,11 +202,30 @@
 }
 
 .box {
-  background: #d9d9d9;
-  padding: 5px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border-radius: 20px;
+  background-color: rgba(0,0,0,0.1);
+    color: #333;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 16px;
+    text-align: center;
+    width: 100%;
+    margin: 5px;
+}
+
+.box-pet-name {
+  font-size: larger;
+  background-color: rgba(0,0,0,0.1);
+    color: #333;
+    border-radius: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    text-align: center;
+    width: 100%;
+    border: 2px solid rgb(88, 149, 100, 100);
+    margin-bottom: -10px;
 }
 
 .box ul {
@@ -226,4 +245,28 @@
 
 .timeStamp {
   margin-top: 1px;
+}
+
+.second-row {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+max-width: 388px;
+box-sizing: border-box;
+}
+.birthdate {
+  max-height: 44px;
+  white-space: nowrap;
+  min-width: 49%;
+  text-align: center;
+  margin: 5px;
+}
+
+.second-box {
+  width: 100%;
+}
+
+.opacity-title {
+  color: rgba(0,0,0,0.6);
 }
